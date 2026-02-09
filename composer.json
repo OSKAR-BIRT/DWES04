@@ -1,0 +1,10 @@
+{
+    "name": "dwes03/te1",
+    "type": "project",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}

@@ -1,0 +1,6 @@
+id,usuario,fecha,hora,intervalo,periodo,precio,pagado
+1,Oskar,20/12/2025,14:00,4,comida,20,true
+2,Gorka,20/12/2025,20:00,5,cena,25,true
+3,Miren,24/12/2025,20:00,10,cena,40,false
+4,Juan Mari,25/12/2025,14:00,5,comida,25,false
+5,Juan Mari,25/12/2025,14:00,5,comida,25,false
