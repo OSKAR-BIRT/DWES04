@@ -1,10 +1,15 @@
 {
-    "name": "dwes03/te1",
-    "type": "project",
-    "require": {},
+    "name": "oskar/prieto_arto_oscar_dwes04_te1",
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "Oskar\\PrietoArtoOscarDwes04Te1\\": "app/"
         }
-    }
+    },
+    "authors": [
+        {
+            "name": "Oskar",
+            "email": "oprieto@birt.eus"
+        }
+    ],
+    "require": {}
 }

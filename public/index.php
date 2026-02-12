@@ -2,19 +2,34 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/../core/router.php';
-require_once __DIR__ . '/../app/controllers/booking.php';
-require_once __DIR__ . '/../app/controllers/home.php';
-require_once __DIR__ . '/../app/utils/csvDataHandle.php';
-require_once __DIR__ . '/../app/models/reserva.php';
-require_once __DIR__ . '/../core/database.php';
+// require_once __DIR__ . '/../vendor/autoload.php';
+// require_once __DIR__ . '/../config/config.php';
+
+// require_once __DIR__ . '/../core/router.php';
+// require_once __DIR__ . '/../app/controllers/booking.php';
+// require_once __DIR__ . '/../app/controllers/home.php';
+// require_once __DIR__ . '/../app/utils/csvDataHandle.php';
+// require_once __DIR__ . '/../app/models/reserva.php';
+
+spl_autoload_register(function ($clase) {
+    // 1. Definimos la carpeta raíz de tu proyecto (un nivel arriba de /public)
+    $base_dir = dirname(__DIR__) . '/';
+
+    // 2. Convertimos los namespaces (App\core\Database) en rutas (App/core/Database.php)
+    // Cambiamos las barras invertidas \ por barras normales /
+    $archivo = $base_dir . str_replace('\\', '/', $clase) . '.php';
+
+    // 3. Si el archivo existe, lo cargamos
+    if (file_exists($archivo)) {
+        require_once $archivo;
+    }
+});
 
 use app\controllers\Booking;
 use app\controllers\Home;
 use core\Router;
 use app\utils\csvDataHandle;
 
-echo '<pre>' . var_dump(Database::connect()) . '</pre>';
 
 $router = new Router();
 

@@ -8,19 +8,13 @@ class Reserva implements JsonSerializable {
     protected $usuario;
     protected $fecha;
     protected $hora;
-    protected $intervalo;
-    protected $periodo;
-    protected $precio;
     protected $pagado;
 
-    function __construct($id, $usuario, $fecha, $hora, $intervalo, $periodo, $precio, $pagado) {
+    function __construct($id, $usuario, $fecha, $hora, $pagado) {
         $this->id = $id;
         $this->usuario = $usuario;
         $this->fecha = $fecha;
         $this->hora = $hora;
-        $this->intervalo = $intervalo;
-        $this->periodo = $periodo;
-        $this->precio = $precio;
         $this->pagado = $pagado;
     }
 
@@ -31,9 +25,6 @@ class Reserva implements JsonSerializable {
         "usuario" => $this->usuario,
         "fecha" => $this->fecha,
         "hora" => $this->hora,
-        "intervalo" => $this->intervalo,
-        "periodo" => $this->periodo,
-        "precio" => $this->precio,
         "pagado" => $this->pagado
         ];
     }
@@ -96,66 +87,6 @@ class Reserva implements JsonSerializable {
     public function setUsuario($usuario)
     {
         $this->usuario = $usuario;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of periodo
-     */ 
-    public function getPeriodo()
-    {
-        return $this->periodo;
-    }
-
-    /**
-     * Set the value of periodo
-     *
-     * @return  self
-     */ 
-    public function setPeriodo($periodo)
-    {
-        $this->periodo = $periodo;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of intervalo
-     */ 
-    public function getIntervalo()
-    {
-        return $this->intervalo;
-    }
-
-    /**
-     * Set the value of intervalo
-     *
-     * @return  self
-     */ 
-    public function setIntervalo($intervalo)
-    {
-        $this->intervalo = $intervalo;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of precio
-     */ 
-    public function getPrecio()
-    {
-        return $this->precio;
-    }
-
-    /**
-     * Set the value of precio
-     *
-     * @return  self
-     */ 
-    public function setPrecio($precio)
-    {
-        $this->precio = $precio;
 
         return $this;
     }

@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /prieto_arto_oscar_DWES04_TE1/public
+RewriteBase /prieto_arto_oscar_DWES04_TE1/public/
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php/$1 [QSA,L]

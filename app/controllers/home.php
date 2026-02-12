@@ -15,6 +15,7 @@ class Home {
     }
 
     function error404() {
+        header("HTTP/1.0 404 Not Found");
         echo "<h1>SISTEMA DE RESERVAS DEL TXOKO</H1>";
         echo "<p> Código 404 - Pagina inesistente. Pruebe con otra URL";
     }
