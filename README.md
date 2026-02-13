@@ -1,81 +1,78 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/zqMLWLIf)
-# 📘 DWES03 - Tarea de Evaluación [2/2]
+📘 DWES04 - Tarea de Evaluación
+📝 Descripción general
+En esta tarea se ampliará la aplicación desarrollada en la unidad anterior incorporando persistencia de datos mediante una base de datos relacional. Para ello, se diseñará e implementará una base de datos en MySQL, así como la capa de acceso a datos, siguiendo una arquitectura en capas.
 
-## 📝 Descripción general
+El alumnado deberá crear el script SQL necesario para definir la estructura de la base de datos, implementar los patrones DAO y DTO, serializar las respuestas a formato JSON y devueltos al cliente a través de la API, respetando el formato estándar application/json.
 
-En esta segunda parte del proyecto, **desarrollarás el diseño que planificaste en la
-primera tarea.**
+🎯 Objetivos de aprendizaje
+Identificar los conceptos básicos de bases de datos relacionales: tablas, claves primarias y claves foráneas.
+Configurar correctamente una conexión a la base de datos mediante un fichero de configuración.
+Implementar un DAO que ejecute operaciones CRUD sobre la base de datos.
+Utilizar DTOs para mapear los resultados de las consultas SQL.
+Serializar los datos obtenidos en formato JSON y devolverlos desde un endpoint de la API.
+Diferenciar claramente las responsabilidades de cada capa: controladores, DAO y DTO.
+Construir una arquitectura en capas que separe correctamente la lógica de negocio, el acceso a datos y la representación de la información.
+🛠️ Ejercicios
+Ejercicio 1: Creación de la BD y conexión
+Base de datos:
 
-Para ello, utilizarás una estructura MVC y un controlador frontal para gestionar las solicitudes. **Toda la comunicación se realizará mediante JSON y HTTP, la persistencia de datos la programarás mediante ficheros CSV.**
+Desarrolla un fichero para la creación de una base de datos con nombre:
+apellido1_apellido2_nombre_DWES04.sql
 
-**El servicio debe correr completamente en el lado del servidor (CSR)** (sin interfaces gráficas).
+La base de datos debe contener al menos dos tablas y debe implementar:
 
-## 🎯 Objetivos de aprendizaje
+Claves primarias para definir las entidades
+Claves foráneas para establecer relaciones entre las entidades
+Los tipos de datos de cada columna deberán adecuarse a los modelos o entidades (por ejemplo: INT, VARCHAR, DATE, etc.).
 
-- Desarrollar un servicio web
-- Entender el funcionamiento de una API
-- Diseñar una estructura MVC robusta
-- Comprender el uso del front controller
-- Incorporar el uso de ficheros CSV
-- Implementar respuestas en formato JSON
-- Desarrollar un servicio CSR
+Define restricciones:NOT NULL, UNIQUE, DEFAULT cuando sea necesario
 
-## 🛠️ Ejercicios
+Implementar restricciones y reglas para garantizar la integridad referencial, por ejemplo:
 
-*⚠️ **Importante**: por favor, nombra el directorio raíz de tu proyecto como: ‘apellido1_apellido2_nombre_DWES03_TE2’*
+Restricción ON DELETE CASCADE en claves foráneas, asegurando que al eliminar un usuario se eliminen también sus pedidos asociados.
+Conexión y Configuración:
 
-#### Ejercicio 1: Estructura de Directorios y Front Controller
+Crear un fichero de configuración con las siguientes credenciales para conectarse:
 
-- Crea una estructura de directorios basada en MVC que respete el diseño de la primera tarea
+Usuario: root
 
-- Configura el archivo `index.php` como controlador frontal, de modo que todas las solicitudes HTTP pasen primero por este archivo para el enrutamiento y procesado.
+Contraseña: (vacía)
 
-- Crea un enrutador con enrutado dinámico.
+Fichero SQL:
 
-#### Ejercicio 2: Persistencia de Datos
+Sube el archivo SQL que contiene el script para crear la base de datos a tu repositorio de GitHub.
 
-- Añade ficheros con extensión `csv` que sirvan como *soporte de datos* para almacenar los elementos de tu servicio, por ejemplo: `Productos`, `Usuarios` etc. 
+Este archivo debe poder ejecutarse sin problemas para crear correctamente la base de datos.
 
-- Incluir al menos 5 entradas iniciales en cada fichero, estructuradas de forma consistente y legible
+Ejercicio 2: Acceso a los datos
+DAO:
 
-*⚠️ **Importante**: al no haber estudiado aún la parte asociada al modelo de datos, si no quieres no crees entidades específicas para cada elemento, puedes trabajar con ellos como arrays asociativos directamente*
+Crear DAOs para acceder a la base de datos.
 
-#### Ejercicio 3: Controladores y Rutas CRUD
+Los controladores de la aplicación deberán hacer uso de los objetos DAO para acceder a la capa de datos.
 
-- Implementa los controladores necesarios para cada entidad definida en la planificación 
+El DAO será el encargado de:
 
-- Configura las rutas en el controlador frontal para redirigir cada tipo de solicitud HTTP a su método correspondiente en los controladores.
+Ejecutar las consultas SQL
+Gestionar operaciones CRUD (Create, Read, Update, Delete)
+Aislar la lógica de acceso a datos del resto de la aplicación
+Comunicación entre Capas:
 
-- Debes implementar como mínimo 5 endpoints
-  
-  - GET (‘All’ y ‘ByID’)
-  
-  - POST
-  
-  - PUT
-  
-  - DELETE
+Los controladores deben interactuar exclusivamente con los objetos DAO para:
 
-- El controlador frontal se comunicará con el cliente rest mediante consultas/respuestas en formato JSON, bien para recibir o enviar datos. 
+Acceder a los datos
+Manipular la información almacenada en la base de datos
+Ejercicio 3: Encapsulación de Datos
+DTO:
 
-#### Ejercicio 4: Respuestas JSON y Códigos HTTP
+Crear objetos DTO para encapsular los datos devueltos por las consultas.
 
-- Asegúrate de que todas las respuestas de la aplicación sean en formato JSON, y que incluya los campos:
-  
-  - `status`
-  
-  - `code`
-  
-  - `message`
-  
-  - `data` (si procede)
+Los DTO deben usarse para:
 
-#### Ejercicio 5: Gestión de Errores
+Organizar los datos de forma clara y consistente
+Enviarlos de manera estructurada a través de la API
+Serialización a JSON:
 
-- Implementa un sistema de gestión de errores que maneje las siguientes excepciones:
-  
-  - **Elemento no encontrado:** si se intenta actualizar un ID que no existe, la respuesta JSON debe incluir un mensaje de error y código
-  
-  - **Error de URL no válida:** si se intenta acceder a una ruta no definida, la aplicación debe devolver un error 404 Not Found.
+Los datos deben ser serializados a formato JSON para ser enviados al cliente cuando el cliente realice una consulta a uno de los endpoints de la API.
 
-- 
+La respuesta de la API debe devolverse en un formato application/json

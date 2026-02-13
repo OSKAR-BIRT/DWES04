@@ -1,0 +1,264 @@
+{
+  "info": {
+    "_postman_id": "351b662c-341a-42a3-99f4-f5aedd724796",
+    "name": "DWES04",
+    "description": "Oscar Prieto Arto\n\nColección de consultas realizadas contra la API creada para la Tarea Evaluativa 1 del módulo 4 de DWES",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "40983749",
+    "_collection_link": "https://go.postman.co/collection/40983749-351b662c-341a-42a3-99f4-f5aedd724796?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get All",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost/dwes04/prieto_arto_oscar_DWES04_TE1/public/booking",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "dwes04",
+            "prieto_arto_oscar_DWES04_TE1",
+            "public",
+            "booking"
+          ]
+        },
+        "description": "Consulta a la API Rest que devuelve un json con todas las reservas que hay en la base de datos"
+      },
+      "response": []
+    },
+    {
+      "name": "Get by ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost/dwes04/prieto_arto_oscar_DWES04_TE1/public/booking/onebooking/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "dwes04",
+            "prieto_arto_oscar_DWES04_TE1",
+            "public",
+            "booking",
+            "onebooking",
+            "1"
+          ]
+        },
+        "description": "Consulta a la API Rest que devuelve un json con los datos de la reserva con el ID que se le pase como parámetro en la URL"
+      },
+      "response": []
+    },
+    {
+      "name": "Post",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"id_usuario\": 3,\n    \"fecha\": \"2026-04-02\",\n    \"hora\": \"19:30:00\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost/dwes04/prieto_arto_oscar_DWES04_TE1/public/booking/append",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "dwes04",
+            "prieto_arto_oscar_DWES04_TE1",
+            "public",
+            "booking",
+            "append"
+          ]
+        },
+        "description": "Consulta a la API que añadirá a la base de datos la reserva que le pasamos en el body de la petición. El body será un json con tres campos: id_usuario, fecha y hora. El id de la reserva lo genera automáticamente la base de datos."
+      },
+      "response": []
+    },
+    {
+      "name": "Update",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful PUT request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"id_usuario\": 2,\n    \"fecha\": \"2026-04-03\",\n    \"hora\": \"23:59:59\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost/dwes04/prieto_arto_oscar_DWES04_TE1/public/booking/modify/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "dwes04",
+            "prieto_arto_oscar_DWES04_TE1",
+            "public",
+            "booking",
+            "modify",
+            "6"
+          ]
+        },
+        "description": "Consulta a la API que modificará en la base de datos la reserva con id igual al que pasemos en la url. Los datos de la reserva se cambiarán por los que le pasemos en el body de la consulta. El body será un json con tres campos: id_usuario, fecha y hora."
+      },
+      "response": []
+    },
+    {
+      "name": "Delete",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful DELETE request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost/dwes04/prieto_arto_oscar_DWES04_TE1/public/booking/delete/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "dwes04",
+            "prieto_arto_oscar_DWES04_TE1",
+            "public",
+            "booking",
+            "delete",
+            "6"
+          ]
+        },
+        "description": "Consulta a la API que borrará de la base de datos la reserva con el id igual al que se pase en la URL de la consulta."
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "id",
+      "value": "1"
+    },
+    {
+      "key": "base_url",
+      "value": "https://template.postman-echo.com"
+    }
+  ]
+}
