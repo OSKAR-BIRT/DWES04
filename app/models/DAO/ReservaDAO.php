@@ -76,11 +76,14 @@ class ReservaDAO {
     // * AÑADIR UNA NUEVA RESERVA *
     // ****************************
     public function crearReserva($datosReserva){
+        $id_usuario = $datosReserva['id_usuario'];
+        $fecha = $datosReserva['fecha'];
+        $hora = $datosReserva['hora'];
         $conection = $this->db->getConnection();
-        $query = "INSERT INTO reservas (id_usuario, fecha, hora) VALUES ('$datosReserva[0]', $datosReserva[1], $datosReserva[2])";
+        $query = "INSERT INTO reservas (id_usuario, fecha, hora) VALUES (" . $id_usuario . ", '" . $fecha . "', '" . $hora ."')";
         $statement = $conection->query($query);
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+        // return $result;
     }
 
 
