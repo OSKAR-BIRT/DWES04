@@ -92,8 +92,12 @@ class ReservaDAO {
     // * ACTUALIZAR DATOS DE UNA RESERVA *
     // ***********************************
     public function actualizarReserva($id, $datosReserva){
+        $id_usuario = $datosReserva['id_usuario'];
+        $fecha = $datosReserva['fecha'];
+        $hora = $datosReserva['hora'];
+        $id_reserva = (int)$id;
         $conection = $this->db->getConnection();
-        $query = "UPDATE reservas SET id_usuario = '{$datosReserva[0]}', fecha = {$datosReserva[1]}, hora = {$datosReserva[2]} WHERE reservas.id_reserva = {$id}";
+        $query = "UPDATE reservas SET id_usuario = $id_usuario, fecha = '" . $fecha . "', hora = '" . $hora ."' WHERE reservas.id_reserva = $id_reserva";
         $statement = $conection->query($query);
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;

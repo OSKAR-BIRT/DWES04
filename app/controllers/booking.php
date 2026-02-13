@@ -39,9 +39,8 @@ class Booking {
     }
 
     function modify($params) {
-        $id = $params[0];
-        $json = $params[1];
-        echo 'Hola desde el método modify de BOOKING Controller ID = ' . $id . ' <br>';
+        $reservaDAO = new ReservaDAO();
+        $reservas = $reservaDAO->actualizarReserva($params[0], $params[1]);
     }
 
 }    
